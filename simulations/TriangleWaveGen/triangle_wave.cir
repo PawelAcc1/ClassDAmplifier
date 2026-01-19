@@ -1,0 +1,4 @@
+TRAINGLE WAVE GENERATOR FOR CLASS D AMPLIFIER
+*******************************
+*LIBRARIES
+.LIB "tlv9062.lib" ;OPAMP LIB
