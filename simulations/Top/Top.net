@@ -1,0 +1,118 @@
+* C:\Users\pbuko\Desktop\ClassDAmp\ClassDAmplifier\simulations\Top\Top.asc
+XU9 Vcc_15 H_side1 Vout+ irfz24n
+XU10 Vout+ L_side1 0 irfz24n
+XU11 Vcc_15 H_side2 Vout- irfz24n
+XU12 Vout- L_side2 0 irfz24n
+Vsup Vcc_15 0 15
+C1 boot1 Vout+ 1.5µ
+C2 boot2 Vout- 1.5µ
+XU13 N001 boot1 SS14
+XU14 N002 boot2 SS14
+R14 N001 Vcc_15 3.3
+R15 Vcc_15 N002 3.3
+XX2 audio 0 triangle Vcc_5 Vref N003 pwm_modulator_component
+XX3 0 PWM_mod Vcc_5 DEAD_N DEAD_P deadtime_component
+XX4 boot1 boot2 0 DEAD_N DEAD_P Vcc_15 H_side1 H_side2 L_side1 L_side2 gatedriver_component
+Vsup_2 Vcc_5 0 5
+Vref Vref 0 2.5
+V§Audio audio 0 SINE(0 0.95 10k)
+XX1 Vcc_5 Vref 0 triangle triangle_wave_gen
+XU1 PWM_mod N004 Vcc_5 0 SN74LVC2G17
+R1 N004 N003 500
+C3 N004 0 100p
+L_BTL1 Vout+ N005 68µ Rser=0.1
+Cg1 N005 0 0.1µ Rser=0.01
+L_BTL2 Vout- N006 68µ Rser=0.1
+Cg2 N006 0 0.1µ Rser=0.01
+C_BTL N005 N006 0.33µ Rser=0.1
+Rload N005 N006 8
+
+* block symbol definitions
+.subckt pwm_modulator_component Audio GND INT_IN Vcc_5 Vref PWM_OUT
+XU3 Vin+offset INT_IN Vcc_5 0 PWM_OUT TLV3201
+C3 Vin+offset Audio 1µ
+R5 Vin+offset Vref 10k
+R1 PWM_OUT Vin+offset 400k
+.inc ../libraries/tlv9062.lib
+.inc ../libraries/tlv3201.lib
+.ends pwm_modulator_component
+
+.subckt deadtime_component GND PWM_IN Vcc_5 OUT_N OUT_P
+XU3 N001 RC_out Vcc_5 0 SN74LVC2G17
+XU4 N004 RC_out Vcc_5 0 SN74LVC2G17
+R1 RC_out PWM_IN {res}
+C1 RC_out GND {cap}
+XU1 OUT_P N003 N004 Vcc_5 0 SN74AHC1G32
+XU2 OUT_N N001 N002 Vcc_5 0 SN74AHC1G00
+XU5 N002 PWM_IN Vcc_5 0 SN74LVC2G17
+XU6 N003 PWM_IN Vcc_5 0 SN74LVC2G17
+.inc ../libraries/SN74AHC1G32_OR.lib
+.inc ../libraries/SN74AHC1G00_NAND.lib
+.inc ../libraries/SN74LVC2G17_BUFF.lib
+.param cap=470p
+.param res=680
+.ends deadtime_component
+
+.subckt gatedriver_component boot1 boot2 GND IN_N IN_P Vcc_15 H_side1 H_side2 L_side1 L_side2
+XU1 N003 N004 0 2N7002
+R1 boot1 N003 47
+R2 N004 IN_N 220
+XU2 boot1 N003 0 N002 N003 N002 ZXTC2045E6
+R3 H_side1 N002 10
+XU3 N006 N007 0 2N7002
+R4 Vcc_15 N006 47
+R5 N007 IN_P 220
+XU4 Vcc_15 N006 0 N005 N006 N005 ZXTC2045E6
+R6 L_side1 N005 10
+XU5 N009 N010 0 2N7002
+R7 boot2 N009 47
+R8 N010 IN_P 220
+XU6 boot2 N009 0 N008 N009 N008 ZXTC2045E6
+R9 H_side2 N008 10
+XU7 N012 N013 0 2N7002
+R10 Vcc_15 N012 47
+R11 N013 IN_N 220
+XU8 Vcc_15 N012 0 N011 N012 N011 ZXTC2045E6
+R12 L_side2 N011 10
+XU9 H_side1 N002 SS14
+XU10 L_side1 N005 SS14
+XU11 H_side2 N008 SS14
+XU12 L_side2 N011 SS14
+.inc ../libraries/2n7002.lib
+.inc ../libraries/ZXTC2045E6.lib
+.inc ../libraries/irfz24n.lib
+.inc ../libraries/ss14.lib
+.ends gatedriver_component
+
+.subckt triangle_wave_gen Vcc_5 Vref GND INT_OUT
+XU1 Vref N001 Vcc_5 0 INT_OUT TLV9062
+XU2 N004 Vref Vcc_5 0 N002 TLV3201
+C1 INT_OUT N001 1n
+R1 N001 N003 500
+R2 N004 INT_OUT 10k
+R3 N002 N004 25k
+R4 N003 N002 500
+C2 N003 GND 250p
+.inc ../libraries/tlv9062.lib
+.inc ../libraries/tlv3201.lib
+.ends triangle_wave_gen
+
+.inc ../libraries/irfz24n.lib
+.inc ../libraries/ss14.lib
+* Full Bridge with Bootstrap
+* Main Power Supply
+* Libraries
+.tran 0 400u 200u
+* Secondary Power Supply
+* Reference Voltage
+* Audio Signal
+.inc ../libraries/SN74LVC2G17_BUFF.lib
+.inc ../libraries/tlv9062.lib
+* Low Pass Filter with load
+.options method=gear
+.options plotwinsize=0
+.options fastaccess
+.options maxstep=10n
+.options reltol=0.005 vntol=100u abstol=1n
+.backanno
+.end

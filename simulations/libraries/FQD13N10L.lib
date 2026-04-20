@@ -1,0 +1,32 @@
+**************** Power Discrete MOSFET Electrical Circuit Model ****************
+* Product Name: FQD13N10L
+* 100V Logic N-Channel MOSFET and D-PAK
+*-------------------------------------------------------------------------------
+.SUBCKT FQD13N10L 20 10 30
+Rg 10 1 0.04
+M1 2 1 3 3 DMOS L=1U W=1U
+.MODEL DMOS NMOS(VTO={1.90*{-0.00082*TEMP+1.0205}} KP={12.7*{-0.00024*TEMP+1.006}}
++ THETA=0.08  VMAX=1.5E5   LEVEL=3)
+Cgs 1 3 380P
+Rd 20 4 0.05 TC=0.01
+Dds 3 4 DDS
+.MODEL DDS D(BV={100*{0.00068*TEMP+0.983}}  M=0.36   CJO=75p   VJ=0.35)
+Dbody 3 20 DBODY
+.MODEL DBODY D(IS=1.8E-12  N=1.00  RS=0.042  EG=1.16  TT=75n)
+Ra 4 2 0.05 TC=0.01
+Rs 3 5 0.002
+Ls 5 30 1.97n
+M2 1 8 6 6 INTER
+E2 8 6 4 1 2
+.MODEL INTER NMOS (VTO=0 KP=10 LEVEL=1)
+CGDMAX 7 4 440p
+Rcgd 7 4 1E7
+Dgd 6 4 DGD
+Rdgd 4 6 1E7
+.MODEL DGD D(M=0.40 CJO=440p VJ=0.22)
+M3 7 9 1 1 INTER
+E3 9 1 4 1 -2
+.ENDS
+*--------------------------------------------------------------------------------
+* Creation : Nov.-12-2002 
+* Fairchild Semiconductor
