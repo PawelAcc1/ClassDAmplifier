@@ -1,2 +1,13 @@
 *.log
 
+*.raw
+
+*.fft
+
+*.plt
+
+*.pdf
+
+datasheets/
+
+PCB_design/D_amplifier/History/
