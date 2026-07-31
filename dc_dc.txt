@@ -1,0 +1,21 @@
+przetwornica Vin = 12V
+przetwornica Vout = 6V
+
+Cboot = 0.1uF
+ceramic X7R
+
+Vout = Vref * (1 + R2/R3)
+Vref = 0.596V
+R2 = 100k
+R3 = 11k
+
+C1 = 10uF, ceramic
+C2 = 0.1uF, ceramic
+
+Lmin = 15uH/22uH
+ILmax = 2.01A
+ILpeak = 2.35A
+Isat >= 3A
+Irms >= 2.01A
+
+Cout = 2x 22uF
