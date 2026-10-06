@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Settings>
+    <Version>1.1</Version>
+    <Affect>Project</Affect>
+  </Settings>
+  <Config />
+  <Documents>
+    <DocumentConfig>
+      <Name>control_logic.SchDoc</Name>
+      <Id>QRXHUKIT</Id>
+      <Config />
+      <Results />
+    </DocumentConfig>
+    <DocumentConfig>
+      <Name>power_section.SchDoc</Name>
+      <Id>JYBONEFT</Id>
+      <Config />
+      <Results />
+    </DocumentConfig>
+    <DocumentConfig>
+      <Name>output_stage.SchDoc</Name>
+      <Id>NCNDFIAY</Id>
+      <Config />
+      <Results />
+    </DocumentConfig>
+    <DocumentConfig>
+      <Name>top.SchDoc</Name>
+      <Id>EYCQQKMY</Id>
+      <Config />
+      <Results />
+    </DocumentConfig>
+    <DocumentConfig>
+      <Name>Top_TB.SchDoc</Name>
+      <Id>AWQPQFNH</Id>
+      <Config />
+      <Results />
+    </DocumentConfig>
+  </Documents>
+  <Results />
+</ProjectConfig>

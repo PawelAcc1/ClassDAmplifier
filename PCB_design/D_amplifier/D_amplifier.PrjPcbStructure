@@ -1,3 +1,5 @@
-Record=TopLevelDocument|FileName=control_logic.SchDoc|SheetNumber=1
-Record=NoMainPathDocument|SourceDocument=control_logic.SchDoc|FileName=output_stage.SchDoc|SheetNumber=3
-Record=NoMainPathDocument|SourceDocument=control_logic.SchDoc|FileName=power_section.SchDoc|SheetNumber=2
+Record=TopLevelDocument|FileName=Top_TB.SchDoc|SheetNumber=1
+Record=SheetSymbol|SourceDocument=Top_TB.SchDoc|Designator=U_top|SchDesignator=U_top|FileName=top.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=top.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=top.SchDoc|Designator=U_control_logic|SchDesignator=U_control_logic|FileName=control_logic.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=control_logic.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=top.SchDoc|Designator=U_output_stage|SchDesignator=U_output_stage|FileName=output_stage.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=output_stage.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=top.SchDoc|Designator=U_power_section|SchDesignator=U_power_section|FileName=power_section.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=power_section.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
